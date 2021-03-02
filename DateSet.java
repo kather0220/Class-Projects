@@ -6,7 +6,7 @@ import java.io.*;
 
 public class DateSet extends JFrame{
 	
-	JComboBox<String> yearBox = new JComboBox<String>();{	// ³âµµ¸¦ ¼±ÅÃÇÏ´Â JComboBox¿¡ ¹İº¹¹®À» ÀÌ¿ëÇÏ¿© ³âµµ¸¦ Ãß°¡
+	JComboBox<String> yearBox = new JComboBox<String>();{	// ë…„ë„ë¥¼ ì„ íƒí•˜ëŠ” JComboBoxì— ë°˜ë³µë¬¸ì„ ì´ìš©í•˜ì—¬ ë…„ë„ë¥¼ ì¶”ê°€
 		for(int i=1;i<=19;i++) {
 			if(i<=9)
 				yearBox.addItem("200"+Integer.toString(i));
@@ -15,7 +15,7 @@ public class DateSet extends JFrame{
 		}
 	}
 	
-	JComboBox<String> monthBox = new JComboBox<String>();{	// ¿ù¸¦ ¼±ÅÃÇÏ´Â JComboBox¿¡ ¹İº¹¹®À» ÀÌ¿ëÇÏ¿© ¿ùÀ» Ãß°¡
+	JComboBox<String> monthBox = new JComboBox<String>();{	// ì›”ì„ ì„ íƒí•˜ëŠ” JComboBoxì— ë°˜ë³µë¬¸ì„ ì´ìš©í•˜ì—¬ ì›”ì„ ì¶”ê°€
 		for(int i=1;i<=12;i++) {
 			if(i<=9)
 				monthBox.addItem("0"+Integer.toString(i));
@@ -23,7 +23,7 @@ public class DateSet extends JFrame{
 				monthBox.addItem(Integer.toString(i));
 		}
 	}
-	JComboBox<String> dateBox = new JComboBox<String>();{	// ÀÏÀ» ¼±ÅÃÇÏ´Â JComboBox¿¡ ¹İº¹¹®À» ÀÌ¿ëÇÏ¿© ÀÏÀ» Ãß°¡
+	JComboBox<String> dateBox = new JComboBox<String>();{	// ì¼ì„ ì„ íƒí•˜ëŠ” JComboBoxì— ë°˜ë³µë¬¸ì„ ì´ìš©í•˜ì—¬ ì¼ì„ ì¶”ê°€
 	for(int i=1; i<=31; i++) {
 		
 		if(i<=9)
@@ -36,95 +36,95 @@ public class DateSet extends JFrame{
 	
 	
 
-	String selectedYear="2001";		// ³âµµ¿Í ¿ù, ÀÏÀ» ÀúÀåÇÏ´Â º¯¼ö¸¦ ¼±¾ğÇÏ°í ÃÊ±â°ªÀ» ÁöÁ¤ÇØÁÜ
+	String selectedYear="2001";		// ë…„ë„ì™€ ì›”, ì¼ì„ ì €ì¥í•˜ëŠ” ë³€ìˆ˜ë¥¼ ì„ ì–¸í•˜ê³  ì´ˆê¸°ê°’ì„ ì§€ì •í•´ì¤Œ
 	String selectedMonth="01";
 	String selectedDate="01";
 	
 	
 	public DateSet() throws IOException, InterruptedException {
-		setTitle("°ú°ÅÀÇ ³¯¾¾ µ¥ÀÌÅÍ");
+		setTitle("ê³¼ê±°ì˜ ë‚ ì”¨ ë°ì´í„°");
 		
-		final JPanel dateSelectMenu= new JPanel();	// dataSelectMenu : Ã³À½ È­¸é ( final·Î ¼±¾ğÇÑ °ÍÀº ´Ù¸¥ ÀÌº¥Æ® ¸®½º³Ê¿¡¼­ Á¢±ÙÇÒ ¼ö ÀÖµµ·Ï ÇÏ±â À§ÇÔ )
+		final JPanel dateSelectMenu= new JPanel();	// dataSelectMenu : ì²˜ìŒ í™”ë©´ ( finalë¡œ ì„ ì–¸í•œ ê²ƒì€ ë‹¤ë¥¸ ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆì—ì„œ ì ‘ê·¼í•  ìˆ˜ ìˆë„ë¡ í•˜ê¸° ìœ„í•¨ )
 		dateSelectMenu.setLayout(new BorderLayout());	
-		dateSelectMenu.setBackground(Color.getHSBColor(20, 20, 20));	// ¼öÄ¡¸¦ Á÷Á¢ ÀÔ·ÂÇÏ¿© ÀûÀıÇÑ ¹è°æ»öÀ» ÁöÁ¤ÇÔ
+		dateSelectMenu.setBackground(Color.getHSBColor(20, 20, 20));	// ìˆ˜ì¹˜ë¥¼ ì§ì ‘ ì…ë ¥í•˜ì—¬ ì ì ˆí•œ ë°°ê²½ìƒ‰ì„ ì§€ì •í•¨
 		
-		Font f = new Font("",Font.PLAIN,20);	// ÆùÆ® °´Ã¼
+		Font f = new Font("",Font.PLAIN,20);	// í°íŠ¸ ê°ì²´
 		
 		
-		JLabel welcomeText = new JLabel("³¯¾¾ µ¥ÀÌÅÍ ¾Ë¸®¹ÌÀÔ´Ï´Ù.");
-		JLabel chooseDate = new JLabel("³¯Â¥¸¦ ¼±ÅÃÇÏ¼¼¿ä!");
-		JButton btn1 = new JButton("¼±ÅÃ ¿Ï·á");
+		JLabel welcomeText = new JLabel("ë‚ ì”¨ ë°ì´í„° ì•Œë¦¬ë¯¸ì…ë‹ˆë‹¤.");
+		JLabel chooseDate = new JLabel("ë‚ ì§œë¥¼ ì„ íƒí•˜ì„¸ìš”!");
+		JButton btn1 = new JButton("ì„ íƒ ì™„ë£Œ");
 		
 		welcomeText.setFont(f);
 		chooseDate.setFont(f);
 		
-		btn1.setBackground(Color.white);	// ¹öÆ°°ú ÄŞº¸ ¹Ú½º »ö±òÀ» ÁöÁ¤ÇØÁÜ
+		btn1.setBackground(Color.white);	// ë²„íŠ¼ê³¼ ì½¤ë³´ ë°•ìŠ¤ ìƒ‰ê¹”ì„ ì§€ì •í•´ì¤Œ
 		yearBox.setBackground(Color.white);
 		monthBox.setBackground(Color.white);
 		dateBox.setBackground(Color.white);
 		
 		
-		yearBox.setBounds(160, 100, 80, 40);	// °¢ ÄÄÆÛ³ÍÆ®ÀÇ À§Ä¡¸¦ ÁöÁ¤ÇØÁÜ
+		yearBox.setBounds(160, 100, 80, 40);	// ê° ì»´í¼ë„ŒíŠ¸ì˜ ìœ„ì¹˜ë¥¼ ì§€ì •í•´ì¤Œ
 		monthBox.setBounds(260, 100, 80, 40);
 		dateBox.setBounds(360,100,80,40);
 		welcomeText.setBounds(190, 10, 300, 20);
 		chooseDate.setBounds(220, 40, 300, 20);
 		btn1.setBounds(260, 300, 100, 40);
 		
-		dateSelectMenu.setLayout(null);	// ÄÄÆÛ³ÍÆ®ÀÇ À§Ä¡¸¦ ÀÚÀ¯·Ó°Ô Ãß°¡ÇÏ±â À§ÇØ ±âÁ¸ ·¹ÀÌ¾Æ¿ôÀ» »èÁ¦ÇÔ
+		dateSelectMenu.setLayout(null);	// ì»´í¼ë„ŒíŠ¸ì˜ ìœ„ì¹˜ë¥¼ ììœ ë¡­ê²Œ ì¶”ê°€í•˜ê¸° ìœ„í•´ ê¸°ì¡´ ë ˆì´ì•„ì›ƒì„ ì‚­ì œí•¨
 		dateSelectMenu.add(yearBox);
 		dateSelectMenu.add(monthBox);
 		dateSelectMenu.add(dateBox);
 		dateSelectMenu.add(chooseDate);
 		dateSelectMenu.add(welcomeText);
 		dateSelectMenu.add(btn1);
-		add(dateSelectMenu);	// ÆĞ³ÎÀ» Ãß°¡ÇÔ
+		add(dateSelectMenu);	// íŒ¨ë„ì„ ì¶”ê°€í•¨
 		
 
 		
-		yearBox.addActionListener(new ActionListener() {	// ³âµµ¸¦ ¼±ÅÃÇÏ´Â ÄŞº¸¹Ú½º¿¡ ÀÌº¥Æ® ¸®½º³Ê¸¦ ³Ö¾îÁÜ
+		yearBox.addActionListener(new ActionListener() {	// ë…„ë„ë¥¼ ì„ íƒí•˜ëŠ” ì½¤ë³´ë°•ìŠ¤ì— ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆë¥¼ ë„£ì–´ì¤Œ
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JComboBox<String> yearInfo = (JComboBox<String>)e.getSource();
-				selectedYear = yearInfo.getSelectedItem().toString();	// »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ³âµµ µ¥ÀÌÅÍ¸¦ °¡Á®¿Í¼­ º¯¼ö¿¡ ÀúÀåÇØÁÜ
+				selectedYear = yearInfo.getSelectedItem().toString();	// ì‚¬ìš©ìê°€ ì„ íƒí•œ ë…„ë„ ë°ì´í„°ë¥¼ ê°€ì ¸ì™€ì„œ ë³€ìˆ˜ì— ì €ì¥í•´ì¤Œ
 				
 			}
 			
 		});
 		
-		monthBox.addActionListener(new ActionListener() {	// ¿ùÀ» ¼±ÅÃÇÏ´Â ÄŞº¸¹Ú½º¿¡ ÀÌº¥Æ® ¸®½º³Ê¸¦ ³Ö¾îÁÜ
+		monthBox.addActionListener(new ActionListener() {	// ì›”ì„ ì„ íƒí•˜ëŠ” ì½¤ë³´ë°•ìŠ¤ì— ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆë¥¼ ë„£ì–´ì¤Œ
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JComboBox<String> monthInfo = (JComboBox<String>)e.getSource();
-				selectedMonth = monthInfo.getSelectedItem().toString();		// »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ¿ù µ¥ÀÌÅÍ¸¦ °¡Á®¿Í¼­ º¯¼ö¿¡ ÀúÀåÇØÁÜ
+				selectedMonth = monthInfo.getSelectedItem().toString();		// ì‚¬ìš©ìê°€ ì„ íƒí•œ ì›” ë°ì´í„°ë¥¼ ê°€ì ¸ì™€ì„œ ë³€ìˆ˜ì— ì €ì¥í•´ì¤Œ
 				
 			}
 			
 		});
 		
-		dateBox.addActionListener(new ActionListener() {	// ÀÏÀ» ¼±ÅÃÇÏ´Â ÄŞº¸¹Ú½º¿¡ ÀÌº¥Æ® ¸®½º³Ê¸¦ ³Ö¾îÁÜ
+		dateBox.addActionListener(new ActionListener() {	// ì¼ì„ ì„ íƒí•˜ëŠ” ì½¤ë³´ë°•ìŠ¤ì— ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆë¥¼ ë„£ì–´ì¤Œ
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JComboBox<String> dateInfo = (JComboBox<String>)e.getSource();
-				selectedDate = dateInfo.getSelectedItem().toString();	// »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÀÏ µ¥ÀÌÅÍ¸¦ °¡Á®¿Í¼­ º¯¼ö¿¡ ÀúÀåÇØÁÜ
+				selectedDate = dateInfo.getSelectedItem().toString();	// ì‚¬ìš©ìê°€ ì„ íƒí•œ ì¼ ë°ì´í„°ë¥¼ ê°€ì ¸ì™€ì„œ ë³€ìˆ˜ì— ì €ì¥í•´ì¤Œ
 
 				
 			}
 			
 		});
 		
-		class MyGUI implements ActionListener{		// ¼±ÅÃ ¿Ï·á ¹öÆ°¿¡ ³ÖÀ» ÀÌº¥Æ® ¸®½º³Ê¸¦ ³»ºÎ Å¬·¡½º·Î ¸¸µé¾î ÁÜ
+		class MyGUI implements ActionListener{		// ì„ íƒ ì™„ë£Œ ë²„íŠ¼ì— ë„£ì„ ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆë¥¼ ë‚´ë¶€ í´ë˜ìŠ¤ë¡œ ë§Œë“¤ì–´ ì¤Œ
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				FileReader fr = null;	// ÆÄÀÏÀ» ÀĞ¾î¿À±â À§ÇÑ °´Ã¼ ¼±¾ğ
+				FileReader fr = null;	// íŒŒì¼ì„ ì½ì–´ì˜¤ê¸° ìœ„í•œ ê°ì²´ ì„ ì–¸
 				try {
 					fr = new FileReader("weather_data.csv");
-				} catch (FileNotFoundException e1) {	// ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê¾ÒÀ» ¶§ÀÇ ¿¹¿Ü Ã³¸®
+				} catch (FileNotFoundException e1) {	// íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•Šì•˜ì„ ë•Œì˜ ì˜ˆì™¸ ì²˜ë¦¬
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -135,33 +135,33 @@ public class DateSet extends JFrame{
 				average = lowest = highest = null;
 				
 				String searchDate = (selectedYear+"-"+selectedMonth+"-"+selectedDate);	
-				// searchDate º¯¼ö¸¦ ÀÌ·± Çü½ÄÀ¸·Î ¸¸µç °ÍÀº ÀĞ¾î¿Â ÆÄÀÏÀÇ µ¥ÀÌÅÍ¿Í Á÷Á¢ÀûÀÎ ºñ±³¸¦ ÇÏ±â À§ÇÑ °ÍÀÓ
+				// searchDate ë³€ìˆ˜ë¥¼ ì´ëŸ° í˜•ì‹ìœ¼ë¡œ ë§Œë“  ê²ƒì€ ì½ì–´ì˜¨ íŒŒì¼ì˜ ë°ì´í„°ì™€ ì§ì ‘ì ì¸ ë¹„êµë¥¼ í•˜ê¸° ìœ„í•œ ê²ƒì„
 				
 				System.out.println(searchDate);
 				
-				BufferedReader br = new BufferedReader(fr);		// ÆÄÀÏÀ» ÇÑ ÁÙ¾¿ ÀĞ±â À§ÇÑ °´Ã¼
+				BufferedReader br = new BufferedReader(fr);		// íŒŒì¼ì„ í•œ ì¤„ì”© ì½ê¸° ìœ„í•œ ê°ì²´
 				int count=0;
 				try {
-					while((line = br.readLine())!=null) {	// ÆÄÀÏÀ» ³¡±îÁö ÀĞÀ½
+					while((line = br.readLine())!=null) {	// íŒŒì¼ì„ ëê¹Œì§€ ì½ìŒ
 						String arr[] = line.split(",");
-						for(String s:arr) {	// µ¥ÀÌÅÍ¸¦ ¼øÂ÷ÀûÀ¸·Î ¸ğµÎ Á¢±ÙÇÔ
-							if(searchDate.equals(arr[0])) {		// »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ³¯Â¥¿Í µ¥ÀÌÅÍÀÇ ³¯Â¥°¡ ÀÏÄ¡ÇÒ ¶§
+						for(String s:arr) {	// ë°ì´í„°ë¥¼ ìˆœì°¨ì ìœ¼ë¡œ ëª¨ë‘ ì ‘ê·¼í•¨
+							if(searchDate.equals(arr[0])) {		// ì‚¬ìš©ìê°€ ì…ë ¥í•œ ë‚ ì§œì™€ ë°ì´í„°ì˜ ë‚ ì§œê°€ ì¼ì¹˜í•  ë•Œ
 								
 								if(count ==1) {	
 									average = s;
-									System.out.println("Æò±Õ: "+average);
+									System.out.println("í‰ê· : "+average);
 								}
 								if(count == 2) {
 									lowest = s;
-									System.out.println("ÃÖÀú : "+lowest);
+									System.out.println("ìµœì € : "+lowest);
 								}
 								if(count == 3) {
 									highest = s;
-									System.out.println("ÃÖ°í: "+highest);
+									System.out.println("ìµœê³ : "+highest);
 								}
 								
 								 count++;
-								 // count¸¦ ÀúÀåÇÏ´Â ÀÌÀ¯´Â ¼øÈ¯¹®À» µ¹ ¶§¸¶´Ù Æò±Õ, ÃÖÀú, ÃÖ°í ±â¿Â µ¥ÀÌÅÍ¸¦ ¼øÂ÷ÀûÀ¸·Î °¡Á®¿À±â À§ÇÑ °ÍÀÓ
+								 // countë¥¼ ì €ì¥í•˜ëŠ” ì´ìœ ëŠ” ìˆœí™˜ë¬¸ì„ ëŒ ë•Œë§ˆë‹¤ í‰ê· , ìµœì €, ìµœê³  ê¸°ì˜¨ ë°ì´í„°ë¥¼ ìˆœì°¨ì ìœ¼ë¡œ ê°€ì ¸ì˜¤ê¸° ìœ„í•œ ê²ƒì„
 								
 								}
 					
@@ -181,38 +181,38 @@ public class DateSet extends JFrame{
 				}
 				
 				
-				dateSelectMenu.setVisible(false);	// Ã³À½ È­¸éÀ» ¾Èº¸ÀÌ°Ô ¸¸µê
+				dateSelectMenu.setVisible(false);	// ì²˜ìŒ í™”ë©´ì„ ì•ˆë³´ì´ê²Œ ë§Œë“¦
 				
-				final JPanel noticeWeatherMenu = new JPanel();	// ¼±ÅÃ ¿Ï·á ¹öÆ°À» ´­·¶À» ¶§ ³ªÅ¸³¯ »õ ÆĞ³ÎÀ» ¼±¾ğ
+				final JPanel noticeWeatherMenu = new JPanel();	// ì„ íƒ ì™„ë£Œ ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ ë‚˜íƒ€ë‚  ìƒˆ íŒ¨ë„ì„ ì„ ì–¸
 				noticeWeatherMenu.setBackground(Color.PINK);
 				add(noticeWeatherMenu);
 				noticeWeatherMenu.setVisible(true);
 				
-				double averageInNum = 0;	// Æò±Õ ±â¿Â µ¥ÀÌÅÍ¸¦ ½Ç¼öÇüÀ¸·Î º¯È¯ÇÏ¿© ÀúÀåÇÏ±â À§ÇØ º¯¼ö ¼±¾ğ
+				double averageInNum = 0;	// í‰ê·  ê¸°ì˜¨ ë°ì´í„°ë¥¼ ì‹¤ìˆ˜í˜•ìœ¼ë¡œ ë³€í™˜í•˜ì—¬ ì €ì¥í•˜ê¸° ìœ„í•´ ë³€ìˆ˜ ì„ ì–¸
 				
-				try {	// ¸¸¾à »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ³¯Â¥°¡ Á¸ÀçÇÏÁö ¾ÊÀº ³¯Â¥¿´À» °æ¿ì, average¿¡´Â µ¥ÀÌÅÍµµ ÀúÀåµÇÁö ¾Ê±â ¶§¹®¿¡ ¿¡·¯°¡ ¹ß»ıÇÔ
+				try {	// ë§Œì•½ ì‚¬ìš©ìê°€ ì…ë ¥í•œ ë‚ ì§œê°€ ì¡´ì¬í•˜ì§€ ì•Šì€ ë‚ ì§œì˜€ì„ ê²½ìš°, averageì—ëŠ” ë°ì´í„°ë„ ì €ì¥ë˜ì§€ ì•Šê¸° ë•Œë¬¸ì— ì—ëŸ¬ê°€ ë°œìƒí•¨
 				averageInNum = Double.parseDouble(average);
 				
 				Font f2 = new Font("",Font.BOLD,14);
-				// Æò±Õ, ÃÖÀú, ÃÖ°í ±â¿ÂÀ» È­¸é¿¡ Ãâ·ÂÇÔ
-				JLabel text1 = new JLabel(searchDate+"ÀÇ Æò±Õ ±â¿ÂÀº  "+average+"µµ ÀÌ°í ÃÖÀú ±â¿ÂÀº "+lowest+"µµ ÀÌ¸ç ÃÖ°í ±â¿ÂÀº "+highest+"µµ ÀÔ´Ï´Ù.");
+				// í‰ê· , ìµœì €, ìµœê³  ê¸°ì˜¨ì„ í™”ë©´ì— ì¶œë ¥í•¨
+				JLabel text1 = new JLabel(searchDate+"ì˜ í‰ê·  ê¸°ì˜¨ì€  "+average+"ë„ ì´ê³  ìµœì € ê¸°ì˜¨ì€ "+lowest+"ë„ ì´ë©° ìµœê³  ê¸°ì˜¨ì€ "+highest+"ë„ ì…ë‹ˆë‹¤.");
 				text1.setFont(f2);
 				noticeWeatherMenu.add(text1,BorderLayout.NORTH);
 				
 				JLabel text2;
 				JLabel image;
-				// ±×¸²À» °¡Á®¿È
+				// ê·¸ë¦¼ì„ ê°€ì ¸ì˜´
 				ImageIcon img1 = new ImageIcon("weather-snowman.jpg");
 				ImageIcon img2 = new ImageIcon("weather-wind.jpg");
 				ImageIcon img3 = new ImageIcon("weather-breeze.jpg");
 				ImageIcon img4 = new ImageIcon("weather-sunny.jpg");
 				
-				// Æò±Õ ±â¿ÂÀÇ ¹üÀ§¸¦ ³ª´©¾î ¹üÀ§¿¡ µû¶ó ´Ù¸¥ ³¯¾¾ ¹®±¸¿Í ±×¸²ÀÌ È­¸é¿¡ Ç¥½Ã µÊ
+				// í‰ê·  ê¸°ì˜¨ì˜ ë²”ìœ„ë¥¼ ë‚˜ëˆ„ì–´ ë²”ìœ„ì— ë”°ë¼ ë‹¤ë¥¸ ë‚ ì”¨ ë¬¸êµ¬ì™€ ê·¸ë¦¼ì´ í™”ë©´ì— í‘œì‹œ ë¨
 				if(averageInNum<=0) {
 					
 					image = new JLabel(img1);
 					noticeWeatherMenu.add(image,BorderLayout.CENTER);
-					text2 = new JLabel("³¯¾¾°¡ ¸Å¿ì Ãß¿ì´Ï ¿ÊÀ» µçµçÇÏ°Ô ÀÔÀ¸½Ã´Â°Ô ÁÁ°Ú½À´Ï´Ù.");
+					text2 = new JLabel("ë‚ ì”¨ê°€ ë§¤ìš° ì¶”ìš°ë‹ˆ ì˜·ì„ ë“ ë“ í•˜ê²Œ ì…ìœ¼ì‹œëŠ”ê²Œ ì¢‹ê² ìŠµë‹ˆë‹¤.");
 					text2.setFont(f2);
 					noticeWeatherMenu.add(text2,BorderLayout.SOUTH);
 					
@@ -222,7 +222,7 @@ public class DateSet extends JFrame{
 					
 					image = new JLabel(img2);
 					noticeWeatherMenu.add(image,BorderLayout.CENTER);
-					text2 = new JLabel("³¯¾¾°¡ ½Ò½ÒÇÏ´Ï °¨±â Á¶½ÉÇÏ½Ã±æ ¹Ù¶ø´Ï´Ù.");
+					text2 = new JLabel("ë‚ ì”¨ê°€ ìŒ€ìŒ€í•˜ë‹ˆ ê°ê¸° ì¡°ì‹¬í•˜ì‹œê¸¸ ë°”ëë‹ˆë‹¤.");
 					text2.setFont(f2);
 					noticeWeatherMenu.add(text2,BorderLayout.SOUTH);
 					
@@ -232,7 +232,7 @@ public class DateSet extends JFrame{
 					
 					image = new JLabel(img3);
 					noticeWeatherMenu.add(image,BorderLayout.CENTER);
-					text2 = new JLabel("³¯¾¾°¡ ¼±¼±ÇÑ ÇÏ·ç°¡ µÇ°Ú½À´Ï´Ù.");
+					text2 = new JLabel("ë‚ ì”¨ê°€ ì„ ì„ í•œ í•˜ë£¨ê°€ ë˜ê² ìŠµë‹ˆë‹¤.");
 					text2.setFont(f2);
 					noticeWeatherMenu.add(text2,BorderLayout.SOUTH);
 					
@@ -242,7 +242,7 @@ public class DateSet extends JFrame{
 					
 					image = new JLabel(img4);
 					noticeWeatherMenu.add(image,BorderLayout.CENTER);
-					text2 = new JLabel("³¯¾¾°¡ ´Ù¼Ò ´ş°Ú½À´Ï´Ù. ¿ÊÀ» °¡º±°Ô ÀÔÀ¸½Ã´Â°Ô ÁÁ°Ú½À´Ï´Ù.");
+					text2 = new JLabel("ë‚ ì”¨ê°€ ë‹¤ì†Œ ë¥ê² ìŠµë‹ˆë‹¤. ì˜·ì„ ê°€ë³ê²Œ ì…ìœ¼ì‹œëŠ”ê²Œ ì¢‹ê² ìŠµë‹ˆë‹¤.");
 					text2.setFont(f2);
 					noticeWeatherMenu.add(text2,BorderLayout.SOUTH);
 					
@@ -251,10 +251,10 @@ public class DateSet extends JFrame{
 			}
 				
 				catch(NullPointerException e1) {	
-					// »ç¿ëÀÚ°¡ Á¸ÀçÇÏÁö ¾ÊÀº ³¯Â¥¸¦ ÀÔ·ÂÇßÀ» ¶§, ¼±ÅÃ ¿Ï·á ¹öÆ° ´©·é ÈÄ ³ªÅ¸³ª´Â È­¸éÀ» º¸ÀÌµµ·Ï ÇÏÁö ¾Ê°í, ±âÁ¸À¸ È­¸é¿¡ ´Ù½Ã ÀÔ·ÂÇÏ¶ó´Â ¸Ş½ÃÁö¸¦ Ãâ·ÂÇÔ
+					// ì‚¬ìš©ìê°€ ì¡´ì¬í•˜ì§€ ì•Šì€ ë‚ ì§œë¥¼ ì…ë ¥í–ˆì„ ë•Œ, ì„ íƒ ì™„ë£Œ ë²„íŠ¼ ëˆ„ë£¬ í›„ ë‚˜íƒ€ë‚˜ëŠ” í™”ë©´ì„ ë³´ì´ë„ë¡ í•˜ì§€ ì•Šê³ , ê¸°ì¡´ìœ¼ í™”ë©´ì— ë‹¤ì‹œ ì…ë ¥í•˜ë¼ëŠ” ë©”ì‹œì§€ë¥¼ ì¶œë ¥í•¨
 					noticeWeatherMenu.setVisible(false);
 					dateSelectMenu.setVisible(true);
-					JLabel errorMessage = new JLabel("Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥ÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+					JLabel errorMessage = new JLabel("ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ë‚ ì§œì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 					errorMessage.setBounds(190, 200, 400, 20);
 					dateSelectMenu.add(errorMessage);
 				}
@@ -263,7 +263,7 @@ public class DateSet extends JFrame{
 			}
 		}
 		
-		btn1.addActionListener(new MyGUI());	// ¼±ÅÃ¿Ï·á ¹öÆ°¿¡ ÀÌº¥Æ® ¸®½º³Ê¸¦ Ãß°¡ÇÔ
+		btn1.addActionListener(new MyGUI());	// ì„ íƒì™„ë£Œ ë²„íŠ¼ì— ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆë¥¼ ì¶”ê°€í•¨
 			
 		setSize(600,500);
 		setVisible(true);	
