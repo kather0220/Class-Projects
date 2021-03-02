@@ -1,6 +1,4 @@
-# Class-Projects
-
-Projects that I completed in my Computer Science & Engineering classes
+# 자바 프로그래밍 및 실습 기말 
 
 <프로젝트 이름> 
 
